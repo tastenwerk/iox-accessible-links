@@ -1,4 +1,4 @@
 iox-accessible-links
-====================
+=========
 
-iox plugin to provide links with access control (email based)
+Cloud storage plugin combined with git let's you manage files on webpages and provide file access to different parties
