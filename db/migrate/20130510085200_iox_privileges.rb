@@ -6,10 +6,10 @@ class IoxPrivileges < ActiveRecord::Migration
       t.boolean     :can_delete, default: false
       t.boolean     :can_share, default: false
 
-      t.string      :email
-      t.string      :public_key
+      t.string      :email, index: true
+      t.string      :access_key, unique: true, index: true
 
-      t.integer     :access_quota
+      t.integer     :access_counter_quota, default: 0
       t.integer     :access_counter
       t.datetime    :expires_at
 
@@ -19,6 +19,11 @@ class IoxPrivileges < ActiveRecord::Migration
       t.string      :type
 
       t.belongs_to  :user
+
+      t.references  :accessible, polymorphic: true
+      # was:
+      #t.integer     :accessible_id
+      #t.string      :accessible_type
 
       t.timestamps
     end

@@ -13,7 +13,6 @@ module Iox
       def has_accessible_links(options = {})
 
         include InstanceMethods
-        has_many :privileges
 
       end
 
@@ -21,13 +20,14 @@ module Iox
 
     module InstanceMethods
 
-      def gen_public_key
+      def gen_access_key
+        return unless access_key.blank?
         o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
-        self.public_key = (0..8).map{ o[rand(o.length)] }.join
-        if self.class.where( public_key: public_key ).count > 0
-          @gen_public_key_trials ||= 0
-          @gen_public_key_trials += 1
-          gen_public_key
+        self.access_key = (0..8).map{ o[rand(o.length)] }.join
+        if self.class.where( access_key: access_key ).count > 0
+          @gen_access_key_trials ||= 0
+          @gen_access_key_trials += 1
+          gen_access_key
         end
       end
 
@@ -36,4 +36,4 @@ module Iox
   end
 end
 
-ActiveRecord::Base.send :include, Iox::ActsAsCloudContainer
+ActiveRecord::Base.send :include, Iox::HasAccessibleLinks

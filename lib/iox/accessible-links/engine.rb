@@ -1,7 +1,7 @@
 require 'iox/engine'
 
 module Iox
-  module Cloud
+  module AcessibleLinks
 
     class Engine < ::Rails::Engine
 
@@ -19,7 +19,7 @@ module Iox
       end
 
       if defined?( ActiveRecord )
-        ActiveRecord::Base.send( :include, IoxCloud::Schema )
+        ActiveRecord::Base.send( :include, Iox::AccessibleLinks::Schema )
       end
 
       initializer :append_migrations do |app|

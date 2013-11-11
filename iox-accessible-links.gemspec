@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'iox-accessible-links/version'
+require 'iox/accessible-links/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "iox-accessible-links"
-  spec.version       = IoxAccessibleLinks::VERSION
+  spec.version       = Iox::AccessibleLinks::VERSION
   spec.authors       = ["thorsten zerha"]
   spec.email         = ["thorsten.zerha@tastenwerk.com"]
   spec.description   = %q{ grants accessible objects to share these objects via simple links }
