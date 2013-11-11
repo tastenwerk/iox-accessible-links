@@ -8,6 +8,7 @@ class IoxPrivileges < ActiveRecord::Migration
 
       t.string      :email, index: true
       t.string      :access_key, unique: true, index: true
+      t.datetime    :confirmed_at
 
       t.integer     :access_counter_quota, default: 0
       t.integer     :access_counter
@@ -21,9 +22,6 @@ class IoxPrivileges < ActiveRecord::Migration
       t.belongs_to  :user
 
       t.references  :accessible, polymorphic: true
-      # was:
-      #t.integer     :accessible_id
-      #t.string      :accessible_type
 
       t.timestamps
     end

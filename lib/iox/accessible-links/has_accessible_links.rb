@@ -5,9 +5,6 @@ module Iox
 
     extend ActiveSupport::Concern
 
-    included do
-    end
-
     module ClassMethods
 
       def has_accessible_links(options = {})

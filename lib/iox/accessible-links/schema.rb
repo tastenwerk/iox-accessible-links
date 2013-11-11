@@ -27,8 +27,8 @@ module Iox
         def add_accessible_links(table_name)
           COLUMNS.each_pair do |column_name, column_arr|
             add_column(table_name, "#{column_name}",
-                                    IoxCloud::Schema.get_column_type(column_arr),
-                                    IoxCloud::Schema.get_column_opts(column_arr) )
+                                    Iox::AccessibleLinks::Schema.get_column_type(column_arr),
+                                    Iox::AccessibleLinks::Schema.get_column_opts(column_arr) )
           end
         end
 
@@ -44,8 +44,8 @@ module Iox
         def accessible_links
           COLUMNS.each_pair do |column_name, column_arr|
             column("#{column_name}",
-                    IoxCloud::Schema.get_column_type(column_arr),
-                    IoxCloud::Schema.get_column_opts(column_arr) )
+                    Iox::AccessibleLinks::Schema.get_column_type(column_arr),
+                    Iox::AccessibleLinks::Schema.get_column_opts(column_arr) )
           end
         end
       end
