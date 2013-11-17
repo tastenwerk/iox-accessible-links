@@ -1,0 +1,8 @@
+en:
+  privilege:
+    confirm_next: "An email has been sent to the email provided email address. Please have a look at your Inbox and eventually check your spam-folder."
+    email_failed: "Sending invitation email failed"
+    email_sent_again: "This email address is already registered. We have sent an invitation key again."
+    wrong_key: "Wrong invitation key"
+    mailer:
+      subject: "Please confirm your request"

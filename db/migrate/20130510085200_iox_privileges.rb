@@ -7,6 +7,10 @@ class IoxPrivileges < ActiveRecord::Migration
       t.boolean     :can_share, default: false
 
       t.string      :email, index: true
+      t.string      :name
+      t.string      :phone
+      t.string      :organization
+
       t.string      :access_key, unique: true, index: true
       t.datetime    :confirmed_at
 
