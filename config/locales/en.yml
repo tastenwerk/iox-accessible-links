@@ -6,3 +6,7 @@ en:
     wrong_key: "Wrong invitation key"
     mailer:
       subject: "Please confirm your request"
+    subscribers: "Subscribers"
+  subscriber:
+    email: "Email"
+    deleted: "Subscriber %{name} has been deleted"

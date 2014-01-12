@@ -28,6 +28,21 @@ module Iox
     end
 
     def index
+      if @webpage = Iox::Webpage.find_by_id( params[:webpage_id] )
+        render json: @webpage.privileges
+      else
+        render json: { error: 'failed to load privileges' }, status: 500
+      end
+    end
+
+    def csv
+      if @webpage = Iox::Webpage.find_by_id( params[:webpage_id] )
+        res = "pos,email address\n"
+        @webpage.privileges.each_with_index do |priv,index|
+          res << index.to_s << "," << priv.email << "\n"
+        end
+        render text: res, content_type: 'text/csv'
+      end
     end
 
     private
