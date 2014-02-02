@@ -8,7 +8,7 @@ module Iox
     def create
       if @webpage = Iox::Webpage.find_by_id( params[:webpage_id] )
         if priv = @webpage.privileges.where(email: params[:privilege][:email]).first
-          PrivilegesMailer.email_invitation( params[:privilege][:email], get_full_key(priv) ).deliver
+          PrivilegesMailer.email_invitation( params[:privilege][:name], params[:privilege][:email], get_full_key(priv) ).deliver
           flash.notice = I18n.t('privilege.email_sent_again')
         else
           priv = @webpage.privileges.build webpage_privilege_params
@@ -16,7 +16,7 @@ module Iox
           priv.expires_at = @webpage.access_expires
           if priv.save
             flash.notice = I18n.t('privilege.confirm_next')
-            PrivilegesMailer.email_invitation( params[:privilege][:email], get_full_key( priv ) ).deliver
+            PrivilegesMailer.email_invitation( params[:privilege][:name], params[:privilege][:email], get_full_key( priv ) ).deliver
           else
             flash.alert = I18n.t('privilege.email_failed')
           end
